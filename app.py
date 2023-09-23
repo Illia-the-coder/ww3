@@ -18,7 +18,7 @@ def transcribe_audio(youtube_url: str, task: str = "transcribe", return_timestam
     - dict: The transcription result.
     """
     client = Client("https://sanchit-gandhi-whisper-jax.hf.space/")
-    result = client.predict(youtube_url, task, return_timestamps, api_name)
+    result = client.predict(youtube_url, task, return_timestamps, fn_index=7)
     return result
 
 
