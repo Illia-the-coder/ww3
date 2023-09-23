@@ -29,6 +29,21 @@ def summarize_video(youtube_url: str, task: str = "transcribe", return_timestamp
     })
     
     return summary_result
+    
+def transcribe_audio(youtube_url: str, task: str = "transcribe", return_timestamps: bool = False, api_name: str = "/predict_2") -> dict:
+    """
+    Transcribe audio from a given YouTube URL using a specified model.
+    Parameters:
+    - youtube_url (str): The YouTube URL to transcribe.
+    - task (str, optional): The task to perform. Default is "transcribe".
+    - return_timestamps (bool, optional): Whether to return timestamps. Default is True.
+    - api_name (str, optional): The API endpoint to use. Default is "/predict_2".
+    Returns:
+    - dict: The transcription result.
+    """
+    client = Client("https://sanchit-gandhi-whisper-jax.hf.space/")
+    result = client.predict(youtube_url, task, return_timestamps, fn_index=7)
+    return result
 
 MODEL_NAME = "openai/whisper-large-v2"
 
