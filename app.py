@@ -20,7 +20,7 @@ def transcribe_and_summarize(youtube_url: str, task: str = "transcribe", return_
     if summarize:
         transcription = result[1]
         summary_result = query({"inputs": transcription})
-        result[2] = summary_result[0].get("summary_text")
+        result[2] = summary_result.get("summary_text")
     
     return result
 
@@ -29,7 +29,7 @@ MODEL_NAME = "openai/whisper-large-v2"
 demo = gr.Blocks()
 
 EXAMPLES = [
-    ["https://www.youtube.com/watch?v=H1YoNlz2LxA", "translate", False],
+    ["https://www.youtube.com/watch?v=HyBw3wcZ124", "translate", False],
 ]
 
 # Define the Gradio interface with the "Summarize" checkbox and "Summary" output
