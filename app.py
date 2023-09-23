@@ -34,7 +34,8 @@ yt_transcribe = gr.Interface(
     fn=transcribe_audio,
     inputs=[
         gr.inputs.Textbox(lines=1, placeholder="Paste the URL to a YouTube video here", label="YouTube URL"),
-        gr.inputs.Radio(["transcribe", "translate"], label="Task", default="transcribe")
+        gr.inputs.Radio(["transcribe", "translate"], label="Task", default="transcribe"),
+        gr.inputs.Checkbox(label="Return timestamps")
     ],
     outputs=["html", "text"],
     layout="horizontal",
