@@ -20,7 +20,7 @@ def transcribe_and_summarize(youtube_url: str, task: str = "transcribe", return_
     if summarize:
         transcription = result[1]
         summary_result = query({"inputs": transcription})
-        result["summary"] = summary_result[0].get("summary_text")
+        result[2] = summary_result[0].get("summary_text")
     
     return result
 
