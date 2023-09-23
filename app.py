@@ -18,9 +18,9 @@ def transcribe_and_summarize(youtube_url: str, task: str = "transcribe", return_
     
     # If the "summarize" checkbox is selected, summarize the transcription
     if summarize:
-        transcription = result.get("transcription", "")
+        transcription = result[1]
         summary_result = query({"inputs": transcription})
-        result["summary"] = summary_result.get("summary_text", "")
+        result["summary"] = summary_result[0].get("summary_text")
     
     return result
 
