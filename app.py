@@ -40,7 +40,8 @@ yt_transcribe = gr.Interface(
         gr.inputs.Radio(["transcribe", "translate"], label="Task", default="transcribe"),
         gr.inputs.Checkbox(label="Return timestamps")
     ],
-    outputs=["html", "text"],
+    outputs=[gr.outputs.HTML(label="Video"),
+        gr.outputs.Textbox(label="Transcription").style(show_copy_button=True)],
     layout="horizontal",
     theme="huggingface",
     title="Whisper Large V2: Transcribe YouTube",
@@ -50,7 +51,8 @@ yt_transcribe = gr.Interface(
         " arbitrary length."
     ),
     allow_flagging="never",
-    examples=EXAMPLES
+    examples=EXAMPLES,
+    cache_examples=False
 )
 
 with demo:
