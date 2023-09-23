@@ -14,13 +14,13 @@ def query(payload):
 
 def transcribe_and_summarize(youtube_url: str, task: str = "transcribe", return_timestamps: bool = False, summarize: bool = False, api_name: str = "/predict_2") -> dict:
     client = Client("https://sanchit-gandhi-whisper-jax.hf.space/")
-    result = client.predict(youtube_url, task, return_timestamps, fn_index=7)
+    result = list(client.predict(youtube_url, task, return_timestamps, fn_index=7))
     
     # If the "summarize" checkbox is selected, summarize the transcription
     if summarize:
         transcription = result[1]
         summary_result = query({"inputs": transcription})
-        result[2] = summary_result
+        result[2] = summary_result[0]['summary_text']
     
     return result
 
