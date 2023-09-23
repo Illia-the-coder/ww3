@@ -29,7 +29,7 @@ MODEL_NAME = "openai/whisper-large-v2"
 demo = gr.Blocks()
 
 EXAMPLES = [
-    ("https://www.youtube.com/watch?v=H1YoNlz2LxA", "translate"),
+    ["https://www.youtube.com/watch?v=H1YoNlz2LxA", "translate"],
 ]
 
 
