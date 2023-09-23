@@ -19,16 +19,16 @@ def query(payload):
     response = requests.post(API_URL, headers=HEADERS, json=payload)
     return response.json()
 
-def summarize_video(youtube_url: str, task: str = "transcribe", return_timestamps: bool = False, summary_length: int = 150) -> dict:
+def summarize_video(youtube_url: str, task: str = "transcribe", return_timestamps: bool = False) -> dict:
     # Call your transcribe_audio function to get the transcription
     transcription_result = transcribe_audio(youtube_url, task, return_timestamps)
     
     # Summarize the transcription
     summary_result = query({
-        "inputs": transcription_result["transcription"][:summary_length]
+        "inputs": transcription_result["transcription"]
     })
     
-    return summary_result
+    return summary_result[0]['summary_text']
     
 def transcribe_audio(youtube_url: str, task: str = "transcribe", return_timestamps: bool = False, api_name: str = "/predict_2") -> dict:
     """
@@ -80,8 +80,7 @@ yt_summarize = gr.Interface(
     inputs=[
         gr.inputs.Textbox(lines=1, placeholder="Paste the URL to a YouTube video here", label="YouTube URL"),
         gr.inputs.Radio(["transcribe", "translate"], label="Task", default="transcribe"),
-        gr.inputs.Checkbox(label="Return timestamps"),
-        gr.inputs.Number(default=150, label="Summary Length", min=1, max=500),
+        gr.inputs.Checkbox(label="Return timestamps")
     ],
     outputs=[gr.outputs.HTML(label="Video"),
         gr.outputs.Textbox(label="Summary").style(show_copy_button=True)],
