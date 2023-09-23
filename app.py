@@ -43,7 +43,7 @@ yt_transcribe = gr.Interface(
     outputs=[gr.outputs.HTML(label="Video"),
         gr.outputs.Textbox(label="Transcription").style(show_copy_button=True)],
     layout="horizontal",
-    theme="huggingface",
+    theme=gr.themes.Base(),
     title="Whisper Large V2: Transcribe YouTube",
     description=(
         "Transcribe long-form YouTube videos with the click of a button! Demo uses the checkpoint"
@@ -56,6 +56,7 @@ yt_transcribe = gr.Interface(
 )
 
 with demo:
+    gr.DuplicateButton()
     gr.TabbedInterface([yt_transcribe], [ "YouTube"])
 
 demo.launch(enable_queue=True)
