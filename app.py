@@ -5,7 +5,7 @@ from gradio_client import Client
 
 # Define the Hugging Face API URL and headers with your token
 API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-HUGGINGFACE_API_TOKEN = "YOUR_HUGGINGFACE_API_TOKEN"  # Replace with your actual token
+HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")  # Replace with your actual token
 headers = {"Authorization": f"Bearer {HUGGINGFACE_API_TOKEN}"}
 
 def query(payload):
@@ -21,7 +21,9 @@ def transcribe_and_summarize(youtube_url: str, task: str = "transcribe", return_
         transcription = result[1]
         summary_result = query({"inputs": transcription})
         result[2] = summary_result
-    
+    else:
+        result[2] = ''
+        
     return result
 
 MODEL_NAME = "openai/whisper-large-v2"
