@@ -1,6 +1,6 @@
 ---
 title: Whisper Large V2
-emoji: 🤫
+emoji: ⚡
 colorFrom: indigo
 colorTo: red
 sdk: gradio
