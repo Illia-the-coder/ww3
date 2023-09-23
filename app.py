@@ -4,7 +4,7 @@ import gradio as gr
 import os
 from gradio_client import Client
 
-def transcribe_audio(youtube_url: str, task: str = "transcribe", return_timestamps: bool = True, api_name: str = "/predict_2") -> dict:
+def transcribe_audio(youtube_url: str, task: str = "transcribe", return_timestamps: bool = False, api_name: str = "/predict_2") -> dict:
     """
     Transcribe audio from a given YouTube URL using a specified model.
 
@@ -29,7 +29,7 @@ MODEL_NAME = "openai/whisper-large-v2"
 demo = gr.Blocks()
 
 EXAMPLES = [
-    ["https://www.youtube.com/watch?v=H1YoNlz2LxA", "translate"],
+    ["https://www.youtube.com/watch?v=H1YoNlz2LxA", "translate",False],
 ]
 
 
