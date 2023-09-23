@@ -20,7 +20,11 @@ def transcribe_and_summarize(youtube_url: str, task: str = "transcribe", return_
     if summarize:
         transcription = result[1]
         summary_result = query({"inputs": transcription})
-        result[2] = summary_result
+        try:
+            result[2] = summary_result[0]['summary_text']
+        except:
+            result[2] = 'Model is overloaded.'
+            
     else:
         result[2] = ''
         
