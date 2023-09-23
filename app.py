@@ -65,7 +65,7 @@ yt_transcribe = gr.Interface(
     cache_examples=False
 )
 
-with demo:
+with demo(theme=gr.themes.Base()):
     gr.DuplicateButton()
     gr.TabbedInterface([yt_transcribe], ["YouTube"])
 
