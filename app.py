@@ -97,10 +97,9 @@ yt_summarize = gr.Interface(
 )
 
 # Add the "Summarize" tab to the Gradio interface
-yt_transcribe.tabs["Summarize"] = yt_summarize
 
 # Launch the Gradio interface
 with yt_transcribe:
     gr.DuplicateButton()
-    gr.TabbedInterface([yt_transcribe], ["YouTube"])
+    gr.TabbedInterface([yt_transcribe,yt_summarize], ["Transcribe","Summarize"])
     yt_transcribe.launch(enable_queue=True)
