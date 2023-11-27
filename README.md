@@ -1,5 +1,5 @@
 ---
-title: Whisper Large V2
+title: Just through video
 emoji: ⚡
 colorFrom: indigo
 colorTo: red
