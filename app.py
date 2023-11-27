@@ -20,7 +20,7 @@ def transcribe_audio(youtube_url: str, task: str = "transcribe", return_timestam
 
 
 
-MODEL_NAME = "openai/whisper-large-v2"
+MODEL_NAME = "openai/whisper-large-v3"
 
 
 demo = gr.Blocks()
